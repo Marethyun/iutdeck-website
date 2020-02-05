@@ -3,7 +3,6 @@
 Base de données: (à mettre dans un fichier ?)
 
 ```SQL
-
 CREATE OR REPLACE TABLE event_types
 (
     id   int AUTO_INCREMENT
@@ -62,7 +61,7 @@ CREATE OR REPLACE TABLE games
     player1_id   int          NOT NULL,
     player2_id   int          NOT NULL,
     time_started datetime     NOT NULL,
-    winner_id    int          NOT NULL,
+    winner_id    int          NULL COMMENT 'Peut être null ? (pas de gagnant en cas d''erreur par exemple)',
     server_name  varchar(255) NOT NULL,
     CONSTRAINT games_players_id_fk_1
         FOREIGN KEY (player1_id) REFERENCES players (id),
@@ -73,5 +72,4 @@ CREATE OR REPLACE TABLE games
     CONSTRAINT games_servers_name_fk
         FOREIGN KEY (server_name) REFERENCES servers (name)
 );
-
 ```
